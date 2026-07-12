@@ -5,13 +5,16 @@ from getpass import getpass
 
 def connect_database():
     password = getpass("Enter MySQL root password: ")
-
-    return mysql.connector.connect(
+    
+    connection = mysql.connector.connect(
         host="127.0.0.1",
         user="root",
         password=password,
-        database="student_management"
+        database="student_management",
+        use_pure=True
     )
+
+    return connection
 
 
 def add_student(connection):
@@ -128,6 +131,5 @@ def main():
         print("Database connection error:", error)
 
 
-if __name__ == "__main__":
+if __name__=="__main__":
     main()
-    
